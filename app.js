@@ -3,18 +3,21 @@ const { engine } = require("express-handlebars");
 const business = require("./business");
 
 const app = express();
-
-// Handlebars setup
+//handlebar
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
-// Landing page: list employee names
+
+// Land page
+
 app.get("/", async (req, res) => {
   const employees = await business.listEmployees();
   res.render("landing", { employees });
 });
-// Employe details 
+
+
+//emplye details
 app.get("/employee/:id", async (req, res) => {
   const empId = req.params.id;
 
@@ -24,8 +27,15 @@ app.get("/employee/:id", async (req, res) => {
     return res.send("Employee not found");
   }
 
-  res.render("employee", { employee });
+
+  const shifts = await business.getEmployeeShifts(empId);
+
+  res.render("employee", {
+    employee,
+    shifts
+  });
 });
+
 
 const PORT = 3000;
 app.listen(PORT, () => {
