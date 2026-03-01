@@ -9,6 +9,13 @@ const persistence = require("./persistence");
 async function listEmployees() {
   return await persistence.getAllEmployees();
 }
+async function updateEmployee(empId, name, phone) {
+  const emp = await persistence.findEmployee(empId);
+  if (!emp) return "Employee not found";
+
+  await persistence.updateEmployee(empId, name, phone);
+  return "OK";
+}
 
 /**
  * Get one employee by ID
@@ -78,5 +85,6 @@ function isBeforeNoon(time) {
 module.exports = {
   listEmployees,
   getEmployee,
-  getEmployeeShifts   
+  getEmployeeShifts,
+  updateEmployee
 };

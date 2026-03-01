@@ -9,7 +9,19 @@ async function getAllEmployees() {
   const raw = await fs.readFile("employees.json", "utf8");
   return JSON.parse(raw);
 }
+async function updateEmployee(empId, name, phone) {
+  const list = await getAllEmployees();
 
+  for (const e of list) {
+    if (e.employeeId === empId) {
+      e.name = name;
+      e.phone = phone;
+      break;
+    }
+  }
+
+  await fs.writeFile("employees.json", JSON.stringify(list, null, 4));
+}
 /**
  * find employe with the id
  * @param {string} empId
@@ -47,11 +59,10 @@ async function addAssignment(empId, shiftId) {
   list.push({ employeeId: empId, shiftId: shiftId });
   await fs.writeFile("assignments.json", JSON.stringify(list, null, 4));
 }
-
 module.exports = {
   getAllEmployees,
   findEmployee,
   getAllShifts,
   getAllAssignments,
-  addAssignment,
+  updateEmployee
 };
