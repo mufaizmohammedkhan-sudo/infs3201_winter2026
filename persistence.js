@@ -2,7 +2,7 @@
 const fs = require("fs/promises");
 
 /**
- * Return all employees
+ * returns all emplyees
  * @returns {Promise<Array<{employeeId:string,name:string,phone:string}>>}
  */
 async function getAllEmployees() {
@@ -11,7 +11,7 @@ async function getAllEmployees() {
 }
 
 /**
- * Find an employee by ID
+ * find employe with the id
  * @param {string} empId
  * @returns {Promise<{employeeId:string,name:string,phone:string}|undefined>}
  */
@@ -21,7 +21,7 @@ async function findEmployee(empId) {
 }
 
 /**
- * Return all shifts
+ * retrns all shifts
  * @returns {Promise<Array<{shiftId:string,date:string,startTime:string,endTime:string}>>}
  */
 async function getAllShifts() {
@@ -30,7 +30,6 @@ async function getAllShifts() {
 }
 
 /**
- * Return all assignments
  * @returns {Promise<Array<{employeeId:string,shiftId:string}>>}
  */
 async function getAllAssignments() {
@@ -39,7 +38,6 @@ async function getAllAssignments() {
 }
 
 /**
- * Add a new assignment record
  * @param {string} empId
  * @param {string} shiftId
  * @returns {Promise<void>}

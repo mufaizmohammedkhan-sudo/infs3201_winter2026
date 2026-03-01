@@ -2,7 +2,7 @@ const fs = require('fs/promises')
 const prompt=require('prompt-sync')()
 
 /**
- * Return a list of all employees loaded from the storage.
+
  * @returns {Array<{ employeeId: string, name: string, phone: string }>} List of employees
  */
 async function getAllEmployees() {
@@ -12,7 +12,6 @@ async function getAllEmployees() {
 }
 
 /**
- * Find a single employee given their ID number.
  * @param {string} empId 
  * @returns {{ employeeId: string, name: string, phone: string }|undefined}
  */
@@ -28,7 +27,6 @@ async function findEmployee(empId) {
 }
 
 /**
- * Get a single shift given the shiftId
  * @param {string} shiftId 
  * @returns {{shiftId:string, date:string, startTime:string, endTime:string}|undefined}
  */
@@ -44,7 +42,6 @@ async function findShift(shiftId) {
 }
 
 /**
- * Get a list of shiftIDs for an employee.
  * @param {string} empId 
  * @returns {Array<{string}>}
  */
@@ -210,8 +207,6 @@ async function scheduleEmployee() {
 }
 
 /**
- * The UI function for displaying the menu and calling the various UI functions.  The function
- * is made async because many of the called functions are also async.
  */
 async function displayMenu() {
     while (true) {
